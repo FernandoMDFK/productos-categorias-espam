@@ -18,11 +18,10 @@ import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { UserRole } from 'src/auth/roles.enum';
 
-@Controller('product')
+@Controller('products')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @Post()
   // Solo operadores pueden crear productos
   @Post()
   @UseGuards(JwtAuthGuard, RolesGuard)

@@ -11,15 +11,14 @@ async function bootstrap() {
   app.use(helmet())
 
 
-  //CORS restringido
+// CORS configurado para aceptar al frontend
   app.enableCors({
-    origin: process.env.ALLOWED_ORIGINS?.split(','),
+    origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-    credentials: false
-  })
+    credentials: true
+  });
 
-
-
+ 
   // Filtro global de excepciones
   app.useGlobalFilters(new AllExceptionsFilter());
 
